@@ -209,6 +209,39 @@ print(f"Raíz Cúbica del Menor: {raiz_cubica_menor}")
 + Luego, solicitamos al usuario que ingrese 5 números reales en un bucle ```for```, y almacenamos estos números en la lista ```numeros```.
 + Después de recopilar los números, llamamos a cada una de las funciones definidas anteriormente para calcular el promedio, la mediana, el promedio multiplicativo, el orden ascendente y descendente de los números, la potencia del mayor al menor, y la raíz cúbica del menor número.
 + Finalmente, imprimimos los resultados en la pantalla, utilizando las f-strings de Python para mostrar los valores calculados.
+## Punto 10
+````python
+# Usando un patrón de acumulación:
+def multiplos_de_tres_acumulacion(lista):
+    multiplos_de_tres = []
+    for numero in lista:
+        if numero % 3 == 0:
+            multiplos_de_tres.append(numero)
+    return multiplos_de_tres
 
+# Ejemplo de uso
+lista_A = [1, 2, 3, 6, 9, 12, 15]
+multiplos = multiplos_de_tres_acumulacion(lista_A)
+print(multiplos)
+# Usando una comprensión de listas:
+def multiplos_de_tres_comprension(lista):
+    return [numero for numero in lista if numero % 3 == 0]
+
+# Ejemplo de uso
+lista_A = [1, 2, 3, 6, 9, 12, 15]
+multiplos = multiplos_de_tres_comprension(lista_A)
+print(multiplos)
+````
+# Explicación de la implementación con patrón de acumulación:
++ Se define una función llamada ```multiplos_de_tres_acumulacion``` que toma una ```lista``` de números llamada lista como argumento.
++ Se inicializa una lista vacía llamada ```multiplos_de_tres``` que se utilizará para almacenar los múltiplos de 3 encontrados en la lista de entrada.
++ Se inicia un bucle ```for``` que recorre cada número ```numero``` en la lista de entrada ```lista```.
++ Dentro del bucle, se verifica si el número ```numero``` es un múltiplo de 3 utilizando el operador ```%```. Si el residuo de la división del número por 3 es igual a 0, entonces es un múltiplo de 3.
++ Si el número es un múltiplo de 3, se agrega a la lista ```multiplos_de_tres``` utilizando el método ```append```.
++ Una vez que se han recorrido todos los números de la lista de entrada, la función devuelve la lista ```multiplos_de_tres```, que contiene todos los múltiplos de 3 encontrados en la lista original.
+# Explicación de la implementación con comprensión de listas:
++ Se define una función llamada ```multiplos_de_tres_comprension``` que toma una lista de números llamada ```lista``` como argumento.
++ Dentro de la función, se utiliza una comprensión de listas para crear una nueva lista. La comprensión de listas recorre cada número ```numero``` en la lista de entrada ```lista``` y lo incluye en la nueva lista solo si cumple la condición especificada (```if numero % 3 == 0```).
++ La función devuelve directamente la lista resultante que contiene todos los múltiplos de 3 encontrados en la lista original.
 
 
