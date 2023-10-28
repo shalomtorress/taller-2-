@@ -135,5 +135,80 @@ print("Elementos en la primera lista que no están en la segunda lista:", elemen
 + Convierte ambas listas en conjuntos utilizando ```set()```, lo que elimina duplicados y facilita las operaciones de conjuntos.
 + Luego, utiliza la operación de diferencia ```(-)``` para encontrar los elementos que están en el ```conjunto1``` (que corresponde a ```lista1```) pero no están en el ```conjunto2``` (que corresponde a ```lista2```).
 + Finalmente, convierte el resultado de la operación de diferencia de nuevo en una lista utilizando ```list()```, ya que el resultado es un conjunto.
+## Punto 9
++ Resolver el punto 7 del taller 1 usando operaciones con vectores.
+````python
+import math
+
+# Función para calcular el promedio de una lista de números
+def calcular_promedio(numeros):
+    return sum(numeros) / len(numeros)
+
+# Función para calcular la mediana de una lista de números
+def calcular_mediana(numeros):
+    numeros_ordenados = sorted(numeros)
+    n = len(numeros_ordenados)
+    if n % 2 == 0:
+        # Si hay un número par de elementos, la mediana es el promedio de los dos elementos del medio
+        medio_1 = numeros_ordenados[n // 2 - 1]
+        medio_2 = numeros_ordenados[n // 2]
+        return (medio_1 + medio_2) / 2
+    else:
+        # Si hay un número impar de elementos, la mediana es el elemento del medio
+        return numeros_ordenados[n // 2]
+
+# Función para calcular el promedio multiplicativo de una lista de números
+def calcular_promedio_multiplicativo(numeros):
+    multiplicacion = 1
+    for numero in numeros:
+        multiplicacion *= numero
+    return multiplicacion ** (1 / len(numeros))
+
+# Función para calcular la potencia del mayor número elevado al menor número
+def calcular_potencia_mayor_menor(numeros):
+    numeros_ordenados = sorted(numeros)
+    mayor = numeros_ordenados[-1]
+    menor = numeros_ordenados[0]
+    return mayor ** menor
+
+# Función para calcular la raíz cúbica del menor número
+def calcular_raiz_cubica_menor(numeros):
+    menor = min(numeros)
+    return math.pow(menor, 1/3)
+
+# Pedir al usuario que ingrese 5 números reales
+numeros = []
+for i in range(5):
+    numero = float(input("Ingrese un número real: "))
+    numeros.append(numero)
+
+# Calcular y mostrar los resultados
+promedio = calcular_promedio(numeros)
+mediana = calcular_mediana(numeros)
+promedio_multiplicativo = calcular_promedio_multiplicativo(numeros)
+numeros_ascendente = sorted(numeros)
+numeros_descendente = sorted(numeros, reverse=True)
+potencia_mayor_menor = calcular_potencia_mayor_menor(numeros)
+raiz_cubica_menor = calcular_raiz_cubica_menor(numeros)
+
+print(f"Promedio: {promedio}")
+print(f"Mediana: {mediana}")
+print(f"Promedio Multiplicativo: {promedio_multiplicativo}")
+print(f"Números Ordenados Ascendente: {numeros_ascendente}")
+print(f"Números Ordenados Descendente: {numeros_descendente}")
+print(f"Potencia del Mayor al Menor: {potencia_mayor_menor}")
+print(f"Raíz Cúbica del Menor: {raiz_cubica_menor}")
+````
++ Importamos el módulo ```math``` para poder utilizar funciones matemáticas como la raíz cúbica.
++ Definimos varias funciones para realizar diferentes cálculos:
+  + ```calcular_promedio(numeros)```: Calcula el promedio de una lista de números sumando todos los números y dividiendo por la cantidad de números en la lista.
+  + ```calcular_mediana(numeros)```: Calcula la mediana de una lista de números. Para ello, primero ordena la lista y luego determina si la cantidad de números es par o impar. Si es par, toma el promedio de los dos números en el medio; si es impar, toma el número del medio.
+  + ```calcular_promedio_multiplicativo(numeros)```: Calcula el promedio multiplicativo de una lista de números. Esto implica multiplicar todos los números y luego calcular la raíz enésima, donde n es la cantidad de números en la lista.
+  + ```calcular_potencia_mayor_menor(numeros)```: Calcula la potencia del mayor número elevado al menor número. Primero, ordena la lista de números para obtener el mayor y el menor.
+  + ```calcular_raiz_cubica_menor(numeros)```: Calcula la raíz cúbica del número más pequeño en la lista.
++ Luego, solicitamos al usuario que ingrese 5 números reales en un bucle ```for```, y almacenamos estos números en la lista ```numeros```.
++ Después de recopilar los números, llamamos a cada una de las funciones definidas anteriormente para calcular el promedio, la mediana, el promedio multiplicativo, el orden ascendente y descendente de los números, la potencia del mayor al menor, y la raíz cúbica del menor número.
++ Finalmente, imprimimos los resultados en la pantalla, utilizando las f-strings de Python para mostrar los valores calculados.
+
 
 
