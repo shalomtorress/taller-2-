@@ -75,7 +75,8 @@ se usa el str para convertir losnumeros en listas, despues se reversan estoas li
 ## Punto 4
 + Diseñar una función que permita calcular una aproximación de la función coseno alrededor de 0 para cualquier valor x (real), utilizando los primeros n términos de la serie de Taylor. nota: use math para traer la función coseno y mostrar la diferencia entre el valor real y la aproximación. Calcule con cuántos términos de la serie (i.e: cuáles valores de n), se tienen errores del 10%, 1%, 0.1% y 0.001%.
 
-## Punto 7
+## Punto 7. 
++ Desarrollar un programa que determine si en una lista se encuentra una cadena de caracteres con dos o más vocales. Si la cadena existe debe imprimirla y si no existe debe imprimir 'No existe'.
 ````python
 # Función para verificar si una cadena tiene dos o más vocales
 def tiene_dos_o_mas_vocales(cadena):
@@ -106,4 +107,33 @@ def buscar_cadenas_con_dos_o_mas_vocales(lista):
 lista_de_cadenas = ["Hola", "Mundo", "Python", "Perro", "Gato"]
 buscar_cadenas_con_dos_o_mas_vocales(lista_de_cadenas)
 ````
++ Función ```tiene_dos_o_mas_vocales```: Esta función toma una cadena como entrada y verifica si contiene al menos dos vocales. 
++ Utiliza un bucle ```for``` para recorrer cada letra en la cadena y compara cada letra con una lista de vocales, que está representada por la cadena "AEIOUaeiou".
++ El contador se incrementa cada vez que se encuentra una vocal en la cadena. Si el contador alcanza al menos 2, la función devuelve ```True```, indicando que la cadena cumple con la condición de tener al menos dos vocales. Si no se cumple, la función devuelve ```False```.
+## Punto 8
++ Desarrollar un programa que dadas dos listas determine que elementos tiene la primer lista que no tenga la segunda lista.
+````python
+# Función para encontrar elementos en la primera lista que no están en la segunda lista
+def encontrar_elementos_no_comunes(lista1, lista2):
+    # Convierte ambas listas en conjuntos para realizar la operación de diferencia
+    conjunto1 = set(lista1)
+    conjunto2 = set(lista2)
+
+    # Encuentra los elementos en el primer conjunto que no están en el segundo conjunto
+    elementos_no_comunes = conjunto1 - conjunto2
+
+    return list(elementos_no_comunes)  # Convierte el resultado de nuevo en una lista
+
+# Ejemplo de uso
+lista1 = [1, 2, 3, 4, 5]
+lista2 = [3, 4, 5, 6, 7]
+
+elementos_no_comunes = encontrar_elementos_no_comunes(lista1, lista2)
+print("Elementos en la primera lista que no están en la segunda lista:", elementos_no_comunes)
+````
++ La función ```encontrar_elementos_no_comunes``` toma dos listas como entrada, ```lista1``` y ```lista2```.
++ Convierte ambas listas en conjuntos utilizando ```set()```, lo que elimina duplicados y facilita las operaciones de conjuntos.
++ Luego, utiliza la operación de diferencia ```(-)``` para encontrar los elementos que están en el ```conjunto1``` (que corresponde a ```lista1```) pero no están en el ```conjunto2``` (que corresponde a ```lista2```).
++ Finalmente, convierte el resultado de la operación de diferencia de nuevo en una lista utilizando ```list()```, ya que el resultado es un conjunto.
+
 
