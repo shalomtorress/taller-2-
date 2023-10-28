@@ -3,7 +3,7 @@
 + Desarrollar un programa que ingrese un número entero n y separe todos los digitos que componen el número. Pista: Utilice los operadores módulo (%) y división entera (//).
 
 
-````pythhon
+````python
 def separar_digitos(numero):
 
   lista_digitos = []
@@ -75,4 +75,35 @@ se usa el str para convertir losnumeros en listas, despues se reversan estoas li
 ## Punto 4
 + Diseñar una función que permita calcular una aproximación de la función coseno alrededor de 0 para cualquier valor x (real), utilizando los primeros n términos de la serie de Taylor. nota: use math para traer la función coseno y mostrar la diferencia entre el valor real y la aproximación. Calcule con cuántos términos de la serie (i.e: cuáles valores de n), se tienen errores del 10%, 1%, 0.1% y 0.001%.
 
+## Punto 7
 ````python
+# Función para verificar si una cadena tiene dos o más vocales
+def tiene_dos_o_mas_vocales(cadena):
+    vocales = "AEIOUaeiou"
+    contador = 0
+
+    for letra in cadena:
+        if letra in vocales:
+            contador += 1
+            if contador >= 2:
+                return True
+
+    return False
+
+# Función principal para buscar cadenas en la lista
+def buscar_cadenas_con_dos_o_mas_vocales(lista):
+    encontrada = False
+
+    for cadena in lista:
+        if tiene_dos_o_mas_vocales(cadena):
+            print("Cadena con dos o más vocales encontrada:", cadena)
+            encontrada = True
+
+    if not encontrada:
+        print("No existe ninguna cadena con dos o más vocales en la lista.")
+
+# Ejemplo de uso
+lista_de_cadenas = ["Hola", "Mundo", "Python", "Perro", "Gato"]
+buscar_cadenas_con_dos_o_mas_vocales(lista_de_cadenas)
+````
+
