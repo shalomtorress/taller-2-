@@ -74,6 +74,115 @@ if __name__ == "__main__":
 se usa el str para convertir losnumeros en listas, despues se reversan estoas listas para poder comparar de izquierda a derecha o de derecha a izquierda. con ````==```` compara las listas, Si las listas son iguales, entonces los números son espejos.
 ## Punto 4
 + Diseñar una función que permita calcular una aproximación de la función coseno alrededor de 0 para cualquier valor x (real), utilizando los primeros n términos de la serie de Taylor. nota: use math para traer la función coseno y mostrar la diferencia entre el valor real y la aproximación. Calcule con cuántos términos de la serie (i.e: cuáles valores de n), se tienen errores del 10%, 1%, 0.1% y 0.001%.
+````python
+import math
+def factorial(i: int):                     
+    if i == 0:                     
+        return 1
+    else:
+        p = 1                     
+        for numero in range(1, i + 1): 
+            p *= numero                
+        return p                       
+iteraciones = int(input("Ingrese número de iteraciones: ")) 
+x = float(input("Ingrese valor x: ")) 
+suma : float = 0                  
+for s in range(iteraciones + 1):            
+    d = d = (x ** (2 * s)) / factorial(2 * s)             
+    d *= (-1) ** s                
+    suma += d                     
+print(f"aproximación cos de {x} es:{suma}")       
+print(f"valor cos de {x} es:{math.cos(x)}") 
+z = abs((abs(suma - math.cos(x))/math.cos(x))*100)          
+print(f"porcentaje de error: {z}")
+````
+se empieza con la funcion ````factorial```` calcula el factorial de un número entero. El factorial de un número entero n es el producto de todos los números enteros desde 1 hasta n. despues le pide al usuario que ingrese el número de iteraciones que desea utilizar para la aproximación tambien le pide al usuario que ingrese el valor de x. La variable ````iteraciones```` almacena el número de iteraciones. La variable x almacena el valor de x, la variable ````suma```` almacena la suma de los nuemeros de la serie, se puso un bucle con for para iterar los valores de 0 hasta ````iteraciones```` para hallar el porcentaje de error se halla la diferencia entre la aproximación y el valor real, dividida por el valor real, multiplicada por 100.
+## Punto 5
++ Desarrollar un programa que permita determinar el Minimo Comun Multiplo de dos numeros enteros. Abordar el problema desde una perpectiva tanto iterativa como recursiva
+#### forma iterativa
+````python
+def mcm_iterativo(a, b):
+  a_primos = factorizar_primos(a)
+  b_primos = factorizar_primos(b)
+
+  mcm = 1
+  for p in a_primos:
+    if p in b_primos:
+      mcm *= p ** max(a_primos[p], b_primos[p])
+  return mcm
+
+
+def factorizar_primos(n):
+
+  factores = {}
+  while n % 2 == 0:
+    factores[2] = factores.get(2, 0) + 1
+    n //= 2
+  p = 3
+  while p * p <= n:
+    while n % p == 0:
+      factores[p] = factores.get(p, 0) + 1
+      n //= p
+    p += 2
+  if n > 1:
+    factores[n] = 1
+  return factores
+if __name__ == "__main__":
+
+
+  a = int(input("Ingrese el primer número: "))
+  b = int(input("Ingrese el segundo número: "))
+
+  mcm = mcm_iterativo(a, b)
+  print(f"El Mínimo Común Múltiplo de {a} y {b} es {mcm}")
+````
+
+para calcular el MCM se descomponen los dos números en factores primos y se multiplican los factores primos comunes, elevados a la máxima potencia. para esto se uso la funcion ```` factorizar_primos````  en esta usamos un bucle for para iterar sobre todos los números primos, comenzando por 2. Para cada número primo, la función comprueba si el número entero dado es divisible por el número primo. Si lo es, la función aumenta el contador correspondiente en el diccionario factores.
+
+luego hay que  multiplican los factores primos comunes, para esto usamos la variable ````mcm````  se inicializa en 1. Luego, el bucle for itera sobre los factores primos de ambos números enteros. Para cada factor primo, la función comprueba si el factor primo está presente en ambos números enteros. Si lo está, la función multiplica ````mcm```` por el factor primo elevado a la máxima potencia.
+
+#### Forma recursiva
+````python
+def mcm_recursivo(a, b):
+
+  if a % b == 0:
+    return b
+  else:
+    return mcm_recursivo(b, a % b)
+
+
+if __name__ == "__main__":
+
+  a = int(input("Ingrese el primer número: "))
+  b = int(input("Ingrese el segundo número: "))
+  mcm = mcm_recursivo(a, b)
+
+  print(f"El Mínimo Común Múltiplo de {a} y {b} es {mcm}")
+````
+## Punto 6
++ Desarrollar un programa que determine si en una lista existen o no elementos repetidos. Pista: Maneje valores booleanos y utilice el operador in.
+
+````python
+def hay_repetidos(lista):
+  repetidos = False
+
+  for i in range(len(lista)):
+    
+    if lista[i] in lista[:i]:
+      repetidos = True
+      break
+
+  return repetidos
+
+
+if __name__ == "__main__":
+  lista = list(map(int, input("Ingrese la lista de números separados por espacios: ").split()))
+
+  repetidos = hay_repetidos(lista)
+
+  print(f"Existen elementos repetidos en la lista: {repetidos}")
+````
+La función ````hay_repetidos```` recorre la lista y comprueba si cada elemento ya se encuentra en la lista, Si un elemento ya se encuentra en la lista, la función cambia la bandera ````repetidos```` a True, la funcion devuelve la bandera repetidos 
 
 ## Punto 7. 
 + Desarrollar un programa que determine si en una lista se encuentra una cadena de caracteres con dos o más vocales. Si la cadena existe debe imprimirla y si no existe debe imprimir 'No existe'.
